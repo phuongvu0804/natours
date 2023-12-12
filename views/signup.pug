@@ -1,0 +1,20 @@
+extends base
+
+mixin inputField(name, type, placeholder, id,...props)
+    .form__group
+        label.form__label(for=type)= name
+        input.form__input(type=`${type}`, placeholder=`${placeholder}`, required, id=`${id} ? ${id}: ''`, props)
+
+block content 
+    main.main
+    .login-form
+        h2.heading-secondary.ma-bt-lg= title
+        form.form
+        +inputField('Name', 'text', 'Your name', 'email')
+        +inputField('Email address', 'email', 'you@example.com', 'email')
+        +inputField('Password', 'password', '••••••••', 'password')
+        +inputField('Password', 'password', '••••••••', 'password', minlength='8')
+        +inputField('Confirm Password', 'password', '••••••••', 'password', minlength='8')
+
+        .form__group
+            button.btn.btn--green Create
